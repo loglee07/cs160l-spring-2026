@@ -14,6 +14,24 @@ public class Parenthesis {
      * @return true is the brackets are balanced else false
      */
     public boolean isBalanced(String brackets) {
-        return false;
+        if (brackets == null || brackets.isEmpty()) {
+            return true;
+        }
+
+        Stack<Character> stack = new Stack<>();
+        for (int i = 0; i < brackets.length(); i++) {
+            char c = brackets.charAt(i);
+            if (c == '(') {
+                stack.push(c);
+            } else if (c == ')') {
+                if (stack.isEmpty()) {
+                    return false;
+                }
+                stack.pop();
+            } else {
+                return false;
+            }
+        }
+        return stack.isEmpty();
     }
 }

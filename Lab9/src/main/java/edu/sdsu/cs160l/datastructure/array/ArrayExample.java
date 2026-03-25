@@ -50,5 +50,15 @@ public class ArrayExample {
         }
 
         //TODO: Find the index of the element of value 30 in the newArray and print it using a linear search algorithm Hint O(N) complexity
+        System.out.println();
+        int target = 30;
+        int index = -1;
+        for (int i = 0; i < newArray.length; i++) {
+            if (newArray[i] == target) {
+                index = i;
+                break;
+            }
+        }
+        System.out.println("Index of " + target + " is: " + index);
     }
 }
