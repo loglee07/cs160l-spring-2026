@@ -5,7 +5,6 @@ import edu.sdsu.cs160l.airplane.wheel.Wheel;
 import edu.sdsu.cs160l.airplane.wheel.WheelStatus;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.junit.platform.suite.api.Suite;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
@@ -17,7 +16,6 @@ import static org.mockito.Mockito.doReturn;
  * Annotate your test class with @RunWith(MockitoJUnitRunner.class)
  */
 @ExtendWith(MockitoExtension.class)
-@Suite()
 public class AirplaneTest {
 
     /**
@@ -64,13 +62,18 @@ public class AirplaneTest {
         // 1. Define the expected wheelStatus for take-off.
         // 2. Use 'doReturn' to set the desired return value for the 'getWheelStatus' method.
         // 3. Call the 'takeOff' method on the airplane object and use an Assert method to validate that the 'WheelStatus' matches your expected value.
-
+        WheelStatus expected = new WheelStatus(true, true);
+        doReturn(expected).when(wheel).getWheelStatus();
+        assertEquals(expected, airplane.takeOff());
     }
 
     @Test
     public void landAirplane() {
         //TODO: Implement test case to verify the land functionality of the airplane.
         // follow similar steps as above but now for the 'land' method
+        WheelStatus expected = new WheelStatus(false, false);
+        doReturn(expected).when(wheel).getWheelStatus();
+        assertEquals(expected, airplane.land());
     }
 
 

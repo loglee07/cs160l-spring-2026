@@ -2,7 +2,6 @@ package edu.sdsu.cs160l.calculator;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.junit.platform.suite.api.Suite;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
@@ -14,7 +13,6 @@ import static org.mockito.Mockito.when;
 
 //TODO add Extension for Mockito and Test Suite
 @ExtendWith(MockitoExtension.class)
-@Suite()
 class MathOperationsTest {
 
     //TODO add annotation for injecting mocks
@@ -47,29 +45,61 @@ class MathOperationsTest {
 
     @Test
     public void testAverage() {
-
-        //TODO add stub for making the average method work in mathOperations class
+        doAnswer(invocation -> {
+            int a = invocation.getArgument(0);
+            int b = invocation.getArgument(1);
+            return a + b;
+        }).when(calculator).add(anyInt(), anyInt());
+        doAnswer(invocation -> {
+            int a = invocation.getArgument(0);
+            int b = invocation.getArgument(1);
+            return a / b;
+        }).when(calculator).div(anyInt(), anyInt());
         assertEquals(2, mathOperations.average(new int[]{1, 2, 3}));
     }
 
     @Test
     public void testPower() {
-
-        //TODO add stub for making the average method work in mathOperations class
+        doAnswer(invocation -> {
+            int a = invocation.getArgument(0);
+            int b = invocation.getArgument(1);
+            return a * b;
+        }).when(calculator).mul(anyInt(), anyInt());
         assertEquals(8, mathOperations.power(2, 3));
     }
 
     @Test
     public void testMidValue() {
-
-        //TODO add stub for making the average method work in mathOperations class
+        doAnswer(invocation -> {
+            int a = invocation.getArgument(0);
+            int b = invocation.getArgument(1);
+            return a + b;
+        }).when(calculator).add(anyInt(), anyInt());
+        doAnswer(invocation -> {
+            int a = invocation.getArgument(0);
+            int b = invocation.getArgument(1);
+            return a / b;
+        }).when(calculator).div(anyInt(), anyInt());
         assertEquals(10, mathOperations.midValue(5, 15));
     }
 
     @Test
     public void testFToC() {
-
-        //TODO add stub for making the average method work in mathOperations class
+        doAnswer(invocation -> {
+            int a = invocation.getArgument(0);
+            int b = invocation.getArgument(1);
+            return a - b;
+        }).when(calculator).sub(anyInt(), anyInt());
+        doAnswer(invocation -> {
+            int a = invocation.getArgument(0);
+            int b = invocation.getArgument(1);
+            return a * b;
+        }).when(calculator).mul(anyInt(), anyInt());
+        doAnswer(invocation -> {
+            int a = invocation.getArgument(0);
+            int b = invocation.getArgument(1);
+            return a / b;
+        }).when(calculator).div(anyInt(), anyInt());
         assertEquals(0, mathOperations.fahrenheitToCelsius(32));
     }
 
