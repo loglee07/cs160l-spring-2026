@@ -15,11 +15,9 @@ import static org.mockito.Mockito.when;
 @ExtendWith(MockitoExtension.class)
 class MathOperationsTest {
 
-    //TODO add annotation for injecting mocks
     @InjectMocks
     private MathOperations mathOperations;
 
-    //TODO add annotation for Mock
     @Mock
     private SimpleCalculator calculator;
 
